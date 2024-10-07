@@ -12,21 +12,40 @@ st.title("Dự đoán với Mô Hình Cây Quyết Định")
 
 # Nhập dữ liệu đầu vào
 st.sidebar.header("Thông tin đầu vào")
-feature_1 = st.sidebar.number_input("Giá trị của đặc trưng 1:", min_value=0.0, value=0.0)
-feature_2 = st.sidebar.number_input("Giá trị của đặc trưng 2:", min_value=0.0, value=0.0)
-# Thêm nhiều đặc trưng nếu cần thiết
+
+# Nhập các đặc trưng từ giao diện người dùng
+
+age = st.sidebar.number_input("Tuổi:", min_value=18, max_value=100, value=30)
+customer_support_calls = st.sidebar.number_input("Số lần gọi hỗ trợ khách hàng:", min_value=0, max_value=20, value=1)
+maximum_daily_mins = st.sidebar.number_input("Số phút xem nhiều nhất mỗi ngày:", min_value=0.0, value=50.0)
+maximum_days_inactive = st.sidebar.number_input("Số ngày không hoạt động tối đa:", min_value=0, max_value=30, value=5)
+minimum_daily_mins = st.sidebar.number_input("Số phút xem ít nhất mỗi ngày:", min_value=0.0, value=10.0)
+no_of_days_subscribed = st.sidebar.number_input("Số ngày đã đăng ký:", min_value=1, max_value=1000, value=100)
+videos_watched = st.sidebar.number_input("Số lượng video đã xem:", min_value=0, max_value=100, value=10)
+weekly_max_night_mins = st.sidebar.number_input("Số phút xem tối đa ban đêm hàng tuần:", min_value=0.0, value=20.0)
+weekly_mins_watched = st.sidebar.number_input("Số phút xem hàng tuần:", min_value=0.0, value=100.0)
 
 # Tạo DataFrame cho đầu vào
 input_data = pd.DataFrame({
-    'feature_1': [feature_1],
-    'feature_2': [feature_2],
-    # Thêm các đặc trưng khác vào đây
+    'age': [age],
+    'customer_support_calls': [customer_support_calls],
+    'maximum_daily_mins': [maximum_daily_mins],
+    'maximum_days_inactive': [maximum_days_inactive],
+    'minimum_daily_mins': [minimum_daily_mins],
+    'no_of_days_subscribed': [no_of_days_subscribed],
+    'videos_watched': [videos_watched],
+    'weekly_max_night_mins': [weekly_max_night_mins],
+    'weekly_mins_watched': [weekly_mins_watched]
 })
 
 # Dự đoán
 if st.sidebar.button("Dự đoán"):
     prediction = model.predict(input_data)
-    st.write("Dự đoán của mô hình là:", prediction[0])
+    result = "Khách hàng sẽ rời bỏ" if prediction[0] == 1 else "Khách hàng sẽ không rời bỏ"
+    
+    # Hiển thị kết quả với chữ lớn hơn
+    st.markdown(f"<h2 style='text-align: center; color: red;'>{result}</h2>", unsafe_allow_html=True)
+
 
 # Chạy ứng dụng
 if __name__ == "__main__":
