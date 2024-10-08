@@ -14,16 +14,15 @@ st.title("Dự đoán với Mô Hình Cây Quyết Định")
 st.sidebar.header("Thông tin đầu vào")
 
 # Nhập các đặc trưng từ giao diện người dùng
-
-age = st.sidebar.number_input("Tuổi:", min_value=18, max_value=100, value=30)
-customer_support_calls = st.sidebar.number_input("Số lần gọi hỗ trợ khách hàng:", min_value=0, max_value=20, value=1)
-maximum_daily_mins = st.sidebar.number_input("Số phút xem nhiều nhất mỗi ngày:", min_value=0.0, value=50.0)
-maximum_days_inactive = st.sidebar.number_input("Số ngày không hoạt động tối đa:", min_value=0, max_value=30, value=5)
-minimum_daily_mins = st.sidebar.number_input("Số phút xem ít nhất mỗi ngày:", min_value=0.0, value=10.0)
-no_of_days_subscribed = st.sidebar.number_input("Số ngày đã đăng ký:", min_value=1, max_value=1000, value=100)
-videos_watched = st.sidebar.number_input("Số lượng video đã xem:", min_value=0, max_value=100, value=10)
-weekly_max_night_mins = st.sidebar.number_input("Số phút xem tối đa ban đêm hàng tuần:", min_value=0.0, value=20.0)
-weekly_mins_watched = st.sidebar.number_input("Số phút xem hàng tuần:", min_value=0.0, value=100.0)
+age = st.sidebar.number_input("Tuổi:", min_value=18, max_value=100, value=34)
+no_of_days_subscribed = st.sidebar.number_input("Số ngày đã đăng ký:", min_value=1, max_value=1000, value=107)
+weekly_mins_watched = st.sidebar.number_input("Số phút xem hàng tuần:", min_value=0.0, value=201.0)
+minimum_daily_mins = st.sidebar.number_input("Số phút xem ít nhất mỗi ngày:", min_value=0.0, value=7.3)
+maximum_daily_mins = st.sidebar.number_input("Số phút xem nhiều nhất mỗi ngày:", min_value=0.0, value=22.78)
+weekly_max_night_mins = st.sidebar.number_input("Số phút xem tối đa ban đêm hàng tuần:", min_value=0.0, value=79.0)
+videos_watched = st.sidebar.number_input("Số lượng video đã xem:", min_value=0, max_value=100, value=3)
+maximum_days_inactive = st.sidebar.number_input("Số ngày không hoạt động tối đa:", min_value=0, max_value=30, value=2)
+customer_support_calls = st.sidebar.number_input("Số lần gọi hỗ trợ khách hàng:", min_value=0, max_value=20, value=3)
 
 # Tạo DataFrame cho đầu vào
 input_data = pd.DataFrame({
